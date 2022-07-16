@@ -119,7 +119,13 @@ layouts = [
         single_border_width=3,
         single_margin=4
         ),
-    # layout.MonadWide(),
+    layout.MonadWide(
+        border_normal="#6fa8dc",
+        border_focus="#8e7cc3",
+        margin=4,
+        single_border_width=3,
+        single_margin=4
+    ),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -213,7 +219,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        # "feh --bg-fill wallpaperpath",
+        "feh --bg-fill /home/say10/Downloads/wallpaper1.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]
