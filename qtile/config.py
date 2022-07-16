@@ -76,7 +76,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Keybind for rofi
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch Rofi")
-    # Key([mod], "m", os.system("rofi -show drun"), desc="Launch Rofi")
+
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -219,7 +219,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill /home/say10/Downloads/wallpaper1.jpg",
+        "feh --bg-fill ../wallpaper1.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]
