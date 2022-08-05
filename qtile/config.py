@@ -75,7 +75,10 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Keybind for rofi
-    Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch Rofi")
+    Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
+    # Growing and shrinking windows
+    Key([mod], "plus", lazy.layout.grow()),
+    Key([mod], "minus", lazy.layout.shrink())
 
 ]
 
@@ -125,7 +128,7 @@ layouts = [
         margin=4,
         single_border_width=3,
         single_margin=4
-    ),
+    )
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
