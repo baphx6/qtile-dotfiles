@@ -78,7 +78,10 @@ keys = [
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
     # Growing and shrinking windows
     Key([mod], "plus", lazy.layout.grow()),
-    Key([mod], "minus", lazy.layout.shrink())
+    Key([mod], "minus", lazy.layout.shrink()),
+    # Pulseaudio
+    Key([mod, "shift"], "plus", lazy.spawn("pulseaudio-ctl up"), desc="vol +5%"),
+    Key([mod, "shift"], "minus", lazy.spawn("pulseaudio-ctl down"), desc="vol -5%")
 
 ]
 
