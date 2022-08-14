@@ -5,6 +5,7 @@ I will keep on adding commits to this repo as I change stuff in my personal desk
 Feel free to change any config file to your heart's content.
 # Packages needed
 Assuming you are using Arch, you can install these packages directly using pacman or from the AUR:
+Fonts used are JetBrains Mono Nerd Font for Alacritty and Fira Code Nerd Font for Polybar.
   - qtile
   - alacritty
   - rofi
@@ -12,4 +13,3 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - feh
   - picom
   - polybar
-# Fonts used are JetBrains Mono Nerd Font for Alacritty and Fira Code Nerd Font for Polybar.
