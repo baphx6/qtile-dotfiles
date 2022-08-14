@@ -12,4 +12,4 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - feh
   - picom
   - polybar
-Fonts used are JetBrains Mono Nerd Font for Alacritty and Fira Code Nerd Font for Polybar.
+# Fonts used are JetBrains Mono Nerd Font for Alacritty and Fira Code Nerd Font for Polybar.
