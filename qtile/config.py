@@ -74,15 +74,16 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # Keybind for rofi
+    # Rofi
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
     # Growing and shrinking windows
     Key([mod], "plus", lazy.layout.grow()),
     Key([mod], "minus", lazy.layout.shrink()),
     # Pulseaudio
     Key([mod, "shift"], "plus", lazy.spawn("pulseaudio-ctl up"), desc="vol +5%"),
-    Key([mod, "shift"], "minus", lazy.spawn("pulseaudio-ctl down"), desc="vol -5%")
-
+    Key([mod, "shift"], "minus", lazy.spawn("pulseaudio-ctl down"), desc="vol -5%"),
+    # BetterLockScreen
+    Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen")
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -131,7 +132,12 @@ layouts = [
         margin=4,
         single_border_width=3,
         single_margin=4
-    )
+    ),
+    layout.Floating(
+        border_normal="#ce7e00",
+        border_focus="#93c47d",
+        border_width=3,
+        )
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -148,10 +154,10 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        
+
         bottom=bar.Bar(
             [
-                
+
                 # widget.CurrentLayout(),
                 # widget.GroupBox(),
                 # widget.Prompt(),
@@ -167,13 +173,13 @@ screens = [
                 # widget.Systray(),
                 # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 # widget.QuickExit(),
-                
+
             ],
             1,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        
+
     ),
 ]
 
@@ -225,7 +231,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill ../the-dark-tower-minimal-4k-0g.jpg",
+        "feh --bg-fill /home/say10/Wallpapers/the-dark-tower-minimal-4k-0g.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]
