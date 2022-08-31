@@ -1,6 +1,6 @@
-![alt text](~/screenshots/archlab2.png)
+![alt text](./screenshots/archlab2.png)
 
-![alt text](~/screenshots/archlab3.png)
+![alt text](./screenshots/archlab3.png)
 
 # Qtile dotfiles
 
