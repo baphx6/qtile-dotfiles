@@ -55,5 +55,30 @@ sudo systemctl enable betterlockscreen@$USER.service
 
 For more info check their repository: https://github.com/betterlockscreen/betterlockscreen
 
+## Keybinds
+
+### Keyboard
+
++ `mod + enter`: Spawn terminal
++ `mod + arrows`: Change window focus
++ `mod + shift + arrows`: Move window
++ `mod + tab`: Toggle layouts
++ `mod + w`: Kill focused window
++ `mod + control + r`: Reload Qtile
++ `mod + control + q`: Shutdown Qtile
++ `mod + m`: Launch Rofi
++ `mod + "plus"`: Grow window (Tiling layouts only)
++ `mod + "minus"`: Shrink  window (Tiling layouts only)
++ `mod + shift + "plus"`: Pulseaudio volume +5%
++ `mod + shift + "minus"`: Pulseaudio volume -5%
++ `mod + l`: Lock screen 
++ `mod + [1-5]`: Switch between workspaces 
+
+### Mouse
+
++ `mod + LeftClick`: Drag window (Converts it into floating window)
++ `mod + RightClick`: Resize window (Converts it into floating window)
++ `mod + CenterClick`: Bring window to front 
+
 ## Shoutouts
 rofi-wifi.sh made by ericmurphy: https://github.com/ericmurphyxyz/rofi-wifi-menu
