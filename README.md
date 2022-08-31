@@ -19,6 +19,12 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - polybar
   - betterlockscreen
 
+## Polybar
+
+The battery module has not been tested yet since I'm building this from a VM and don't have access to a laptop. It's literally the same as the one they suggest in their repo though (https://github.com/polybar/polybar/wiki/Module:-battery), so I assume it should work right off the bat if you specify your battery and adapter. I will tweak it once I get my hands on a laptop to keep labbing.
+
+If you do have a laptop and want to try it, you will need to add it to the modules-right variable in the config.ini file.
+
 ## BetterLockScreen
 
 In order to use betterlockscreen you will need to update its cache with the image you want to use.
