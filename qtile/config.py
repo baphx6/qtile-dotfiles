@@ -86,7 +86,7 @@ keys = [
     Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen")
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     keys.extend(
@@ -231,7 +231,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill /home/say10/Wallpapers/the-dark-tower-minimal-4k-0g.jpg",
+        "feh --bg-fill ../wallpapers/astronaut-minimal.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]
