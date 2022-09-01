@@ -23,6 +23,31 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - polybar
   - betterlockscreen
 
+## Keybinds
+
+### Keyboard
+
++ `mod + enter`: Spawn terminal
++ `mod + arrows`: Change window focus
++ `mod + shift + arrows`: Move window
++ `mod + tab`: Toggle layouts
++ `mod + w`: Kill focused window
++ `mod + control + r`: Reload Qtile
++ `mod + control + q`: Shutdown Qtile
++ `mod + m`: Launch Rofi
++ `mod + "plus"`: Grow window (Tiling layouts only)
++ `mod + "minus"`: Shrink  window (Tiling layouts only)
++ `mod + shift + "plus"`: Pulseaudio volume +5%
++ `mod + shift + "minus"`: Pulseaudio volume -5%
++ `mod + l`: Lock screen 
++ `mod + [1-5]`: Switch between workspaces 
+
+### Mouse
+
++ `mod + LeftClick`: Drag window (Converts it into floating window)
++ `mod + RightClick`: Resize window (Converts it into floating window)
++ `mod + CenterClick`: Bring window to front 
+
 ## Polybar
 
 The battery module has not been tested yet since I'm building this from a VM and don't have access to a laptop. It's literally the same as the one they suggest in their repo though (https://github.com/polybar/polybar/wiki/Module:-battery), so I assume it should work right off the bat if you specify your battery and adapter. I will tweak it once I get my hands on a laptop to keep labbing.
@@ -54,31 +79,6 @@ sudo systemctl enable betterlockscreen@$USER.service
 ```
 
 For more info check their repository: https://github.com/betterlockscreen/betterlockscreen
-
-## Keybinds
-
-### Keyboard
-
-+ `mod + enter`: Spawn terminal
-+ `mod + arrows`: Change window focus
-+ `mod + shift + arrows`: Move window
-+ `mod + tab`: Toggle layouts
-+ `mod + w`: Kill focused window
-+ `mod + control + r`: Reload Qtile
-+ `mod + control + q`: Shutdown Qtile
-+ `mod + m`: Launch Rofi
-+ `mod + "plus"`: Grow window (Tiling layouts only)
-+ `mod + "minus"`: Shrink  window (Tiling layouts only)
-+ `mod + shift + "plus"`: Pulseaudio volume +5%
-+ `mod + shift + "minus"`: Pulseaudio volume -5%
-+ `mod + l`: Lock screen 
-+ `mod + [1-5]`: Switch between workspaces 
-
-### Mouse
-
-+ `mod + LeftClick`: Drag window (Converts it into floating window)
-+ `mod + RightClick`: Resize window (Converts it into floating window)
-+ `mod + CenterClick`: Bring window to front 
 
 ## Shoutouts
 rofi-wifi.sh made by ericmurphy: https://github.com/ericmurphyxyz/rofi-wifi-menu
