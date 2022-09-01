@@ -2,6 +2,8 @@
 
 ![alt text](./screenshots/archlab3.png)
 
+![alt text](./screenshots/ar.png)
+
 # Qtile dotfiles
 
 My first Arch Linux custom desktop, made from scratch with QtileWM.
