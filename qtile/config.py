@@ -83,7 +83,11 @@ keys = [
     Key([mod, "shift"], "plus", lazy.spawn("pulseaudio-ctl up"), desc="vol +5%"),
     Key([mod, "shift"], "minus", lazy.spawn("pulseaudio-ctl down"), desc="vol -5%"),
     # BetterLockScreen
-    Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen")
+    Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen"),
+    # Flameshot
+    Key([mod], "s", lazy.spawn("flameshot gui"), desc="Flameshot gui screenshot"),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Flameshot fullscreenshot")
+
 ]
 
 groups = [Group(i) for i in "12345"]

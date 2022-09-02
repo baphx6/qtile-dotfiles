@@ -24,25 +24,29 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - picom
   - polybar
   - betterlockscreen
+  - flameshot
 
 ## Keybinds
 
 ### Keyboard
 
-+ `mod + enter`: Spawn terminal
-+ `mod + arrows`: Change window focus
-+ `mod + shift + arrows`: Move window
-+ `mod + tab`: Toggle layouts
-+ `mod + w`: Kill focused window
-+ `mod + control + r`: Reload Qtile
-+ `mod + control + q`: Shutdown Qtile
-+ `mod + m`: Launch Rofi
-+ `mod + "plus"`: Grow window (Tiling layouts only)
-+ `mod + "minus"`: Shrink  window (Tiling layouts only)
-+ `mod + shift + "plus"`: Pulseaudio volume +5%
-+ `mod + shift + "minus"`: Pulseaudio volume -5%
-+ `mod + l`: Lock screen 
-+ `mod + [1-5]`: Switch between workspaces 
++ `mod + enter` : Spawn terminal
++ `mod + arrows` : Change window focus
++ `mod + shift + arrows` : Move window
++ `mod + tab` : Toggle layouts
++ `mod + w` : Kill focused window
++ `mod + control + r` : Reload Qtile
++ `mod + control + q` : Shutdown Qtile
++ `mod + m` : Launch Rofi
++ `mod + "plus"` : Grow window (Tiling layouts only)
++ `mod + "minus"` : Shrink  window (Tiling layouts only)
++ `mod + shift + "plus"` : Pulseaudio volume +5%
++ `mod + shift + "minus"` : Pulseaudio volume -5%
++ `mod + l` : Lock screen 
++ `mod + [1-5]` : Switch between workspaces
++ `mod + s` : Select screenshot area
++ `mod + shift + s` : Full screenshot 
+
 
 ### Mouse
 
