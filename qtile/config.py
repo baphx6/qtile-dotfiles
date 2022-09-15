@@ -235,7 +235,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill ../wallpapers/astronaut-minimal.jpg",
+        "feh --bg-fill ~/.config/wallpapers/astronaut-minimal.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]

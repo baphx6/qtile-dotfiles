@@ -9,10 +9,15 @@ If you want to use these dotfiles, please keep in mind that you need every packa
 I will keep on adding commits to this repo as I change stuff in my personal desktop.
 Feel free to change any config file to your heart's content.
 
+Note: The display server I use is Xorg, none of this has been tested on Wayland
+
 
 ## Packages needed
 
-Fonts used are JetBrains Mono Nerd Font for Alacritty and Fira Code Nerd Font for Polybar.
+Fonts used are:
+  - JetBrains Mono Nerd Font
+  - Fira Code Nerd Font
+
 Assuming you are using Arch, you can install these packages directly using pacman or from the AUR:
   - qtile
   - alacritty
@@ -51,6 +56,7 @@ Assuming you are using Arch, you can install these packages directly using pacma
 + `mod + LeftClick`: Drag window (Converts it into floating window)
 + `mod + RightClick`: Resize window (Converts it into floating window)
 + `mod + CenterClick`: Bring window to front 
++ `Scroll (on the volume module)`: Pulseaudio volume +-5%
 
 ## Polybar
 
