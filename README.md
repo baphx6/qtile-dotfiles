@@ -91,4 +91,5 @@ sudo systemctl enable betterlockscreen@$USER.service
 For more info check their repository: https://github.com/betterlockscreen/betterlockscreen
 
 ## Shoutouts
-rofi-wifi.sh made by ericmurphy: https://github.com/ericmurphyxyz/rofi-wifi-menu
+NvChad: https://github.com/NvChad/NvChad
+zsh4humans: https://github.com/romkatv/zsh4humans
