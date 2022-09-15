@@ -91,5 +91,5 @@ sudo systemctl enable betterlockscreen@$USER.service
 For more info check their repository: https://github.com/betterlockscreen/betterlockscreen
 
 ## Shoutouts
-NvChad: https://github.com/NvChad/NvChad
-zsh4humans: https://github.com/romkatv/zsh4humans
+  - NvChad: https://github.com/NvChad/NvChad
+  - zsh4humans: https://github.com/romkatv/zsh4humans
