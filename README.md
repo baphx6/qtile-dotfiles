@@ -29,6 +29,10 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - betterlockscreen
   - flameshot
 
+## Login
+
+If logging in from the tty is not your thing, you may want to check some login manager. I use sddm with an astronaut theme (https://github.com/joe733/sddm-theme-astronaut).
+
 ## Keybinds
 
 ### Keyboard
