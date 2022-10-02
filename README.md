@@ -2,6 +2,8 @@
 
 ![alt text](./screenshots/archlab3.png)
 
+![alt text](./screenshots/rofi.png)
+
 # Qtile dotfiles
 
 My first Arch Linux custom desktop, made from scratch with QtileWM.
@@ -32,6 +34,8 @@ Assuming you are using Arch, you can install these packages directly using pacma
 ## Login
 
 If logging in from the tty is not your thing, you may want to check some login manager. I use sddm with an astronaut theme (https://github.com/joe733/sddm-theme-astronaut).
+
+![alt text](./screenshots/login.png)
 
 ## Keybinds
 
