@@ -74,7 +74,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # Rofi
+    # Keybind for rofi
     Key([mod], "m", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
     # Growing and shrinking windows
     Key([mod], "plus", lazy.layout.grow()),
@@ -87,7 +87,6 @@ keys = [
     # Flameshot
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Flameshot gui screenshot"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Flameshot fullscreenshot")
-
 ]
 
 groups = [Group(i) for i in "12345"]
@@ -126,22 +125,27 @@ layouts = [
     layout.MonadTall(
         border_normal="#6fa8dc",
         border_focus="#8e7cc3",
-        margin=4,
+        border_width=3,
+        margin=6,
         single_border_width=3,
         single_margin=4
         ),
     layout.MonadWide(
         border_normal="#6fa8dc",
         border_focus="#8e7cc3",
-        margin=4,
+        border_width=3,
+        margin=6,
         single_border_width=3,
         single_margin=4
-    ),
+        ),
     layout.Floating(
-        border_normal="#ce7e00",
-        border_focus="#93c47d",
+        border_normal="#6fa8dc",
+        border_focus="#8e7cc3",
         border_width=3,
-        )
+        margin=6,
+        single_border_width=3,
+        single_margin=4
+        ),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -235,7 +239,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill ~/.config/wallpapers/astronaut-minimal.jpg",
+        "feh --bg-fill ../wallpapers/ramen-bowl-godzilla-v-kong-1920×1080.jpg",
         "picom --no-vsync &",
         "polybar -r &"
         ]
