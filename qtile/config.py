@@ -29,11 +29,19 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from typing import Optional
+from libqtile.widget.textbox import TextBox
+from libqtile.widget.spacer import Spacer
+
 import os
 
 mod = "mod4"
 #terminal = guess_terminal()
 terminal = "alacritty"
+ 
+################################################################################################
+###################################### KEYBINDS ################################################
+################################################################################################
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -89,7 +97,12 @@ keys = [
     Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Flameshot fullscreenshot")
 ]
 
-groups = [Group(i) for i in "12345"]
+
+################################################################################################
+###################################### GROUPS ##################################################
+################################################################################################
+
+groups = [Group(i, label="") for i in "1234567"]
 
 for i in groups:
     keys.extend(
@@ -115,6 +128,34 @@ for i in groups:
         ]
     )
 
+################################################################################################
+###################################### COLORS ##################################################
+################################################################################################
+
+background = "#1F1C19"
+white = "#eeeeee"
+disabled = "#707880"
+transparent = "#00"
+alert = "#A54242"
+
+# Palette 1
+aquamarine = "#8ABEB7"
+purple = "#8e7cc3" 
+blue = "#6fa8dc"
+silver = "#AEC6CF"
+
+# Hellkitty Palette
+hk_whitesmoke = "#fff5f5"
+hk_red = "#d95151"
+hk_gold = "#d8b049"
+hk_blue = "#508abb"
+hk_black = "#2d2929"
+
+
+################################################################################################
+###################################### LAYOUTS #################################################
+################################################################################################
+
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # layout.Max(),
@@ -123,24 +164,24 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(
-        border_normal="#6fa8dc",
-        border_focus="#8e7cc3",
+        border_normal=blue,
+        border_focus=purple,
         border_width=3,
         margin=6,
         single_border_width=3,
         single_margin=4
         ),
     layout.MonadWide(
-        border_normal="#6fa8dc",
-        border_focus="#8e7cc3",
+        border_normal=blue,
+        border_focus=purple,
         border_width=3,
         margin=6,
         single_border_width=3,
         single_margin=4
         ),
     layout.Floating(
-        border_normal="#6fa8dc",
-        border_focus="#8e7cc3",
+        border_normal=blue,
+        border_focus=purple,
         border_width=3,
         margin=6,
         single_border_width=3,
@@ -160,36 +201,211 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+################################################################################################
+###################################### UNICODE #################################################
+################################################################################################
+
+def left_half_circle(fg_color):
+    return TextBox(
+        text='\uE0B6',
+        fontsize=28,
+        foreground=fg_color,
+        padding=0)
+
+
+def right_half_circle(fg_color, bg_color: Optional['str'] = None):
+    return TextBox(
+        text='\uE0B4',
+        fontsize=28,
+        background=bg_color,
+        foreground=fg_color,
+        padding=0)
+
+
+def lower_left_triangle(bg_color, fg_color):
+    return TextBox(
+        text='\u25e2',
+        padding=0,
+        fontsize=50,
+        background=bg_color,
+        foreground=fg_color)
+
+
+def left_arrow(bg_color, fg_color):
+    return TextBox(
+        text='\uE0B2',
+        padding=0,
+        fontsize=24,
+        background=bg_color,
+        foreground=fg_color)
+
+
+def right_arrow(bg_color, fg_color):
+    return TextBox(
+        text='\uE0B0',
+        padding=0,
+        fontsize=24,
+        background=bg_color,
+        foreground=fg_color)
+
+################################################################################################
+######################################## BAR ###################################################
+################################################################################################
+
 screens = [
+
     Screen(
-
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
+                left_half_circle(hk_black),
+                widget.GroupBox(
+                    fontsize=16,
+                    borderwidth=3,
+                    highlight_method='line',
+                    active=blue,
+                    block_highlight_text_color=blue,
+                    highlight_color=hk_black,
+                    inactive=aquamarine,
+                    foreground=background,
+                    background=hk_black,
+                    this_current_screen_border=purple,
+                    rounded=True,
+                    disable_drag=True,
+                 ),
+                right_half_circle(hk_black),
 
-                # widget.CurrentLayout(),
-                # widget.GroupBox(),
-                # widget.Prompt(),
-                # widget.WindowName(),
-                # widget.Chord(
-                #    chords_colors={
-                #        "launch": ("#ff0000", "#ffffff"),
-                #    },
-                #    name_transform=lambda name: name.upper(),
+                Spacer(length=10),
+
+                left_half_circle(hk_blue),
+                widget.CurrentLayoutIcon(
+                    padding = 0,
+                    scale = 0.5,
+                    background=hk_blue,
+                ),
+
+                    widget.CurrentLayout(
+                    font= 'JetBrains Mono Bold',
+                    background=hk_blue,
+                ),
+                right_half_circle(hk_blue),
+
+                Spacer(length=10),
+
+                left_half_circle(hk_black),
+                widget.WindowName(
+                    format = "{name}",
+                    #format = "{ }",
+                    font='JetBrains Mono Bold',
+                    empty_group_string = 'Desktop',
+                    background=hk_black,
+                ),
+                right_half_circle(hk_black),
+
+                Spacer(length=10),
+
+                #widget.Systray(
+                #    fontsize=2,
+                #    background=background,
                 #),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # widget.Systray(),
-                # widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                # widget.QuickExit(),
 
+                #widget.TextBox(
+                #    text=' ',
+                #    background=background,
+                #),
+
+                #widget.TextBox(
+                #    text='',
+                #    size=20,
+                #    font='JetBrains Mono Bold',
+                #    background=background,
+                #),
+                 
+                #widget.Battery(
+                #    format=' {percent:2.0%}',
+                #    font="JetBrains Mono ExtraBold",
+                #    fontsize=12,
+                #    padding=10,
+                #    background=background,
+                #),                     
+
+                left_half_circle(aquamarine),
+                widget.CheckUpdates(
+                    distro='Arch_Sup',
+                    #colour_have_updates=white,
+                    #colour_no_updates=blue,
+                    display_format= 'Updates 祝  {updates}',
+                    no_update_string='Updates 祝  0',
+                    #execute= '',
+                    update_interval= 3600,
+                    fontsize=12,
+                    padding=10,
+                    font="JetBrains Mono Bold",
+                    background=aquamarine,
+                ),
+                right_half_circle(aquamarine),
+
+                Spacer(length=10),
+
+                left_half_circle(hk_blue),
+                widget.CPU(
+                    format='CPU   {load_percent}%',
+                    fontsize=12,
+                    padding=10,
+                    font="JetBrains Mono Bold",
+                    background=hk_blue,
+                ),
+
+                widget.Memory(
+                    #format='{SwapUsed: .0f}{mm}',
+                    format='RAM  ﬙ {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',
+                    measure_mem='G',
+                    font="JetBrains Mono Bold",
+                    fontsize=12,
+                    padding=10,
+                    background=hk_blue,
+                ),
+                right_half_circle(hk_blue),
+
+                Spacer(length=10),
+
+                left_half_circle(purple),
+                widget.TextBox(
+                    text="",
+                    font="JetBrains Mono Bold",
+                    fontsize=25,
+                    padding=0,
+                    background=purple,
+                ),
+                
+                widget.PulseVolume(
+                    font='JetBrains Mono Bold',
+                    fontsize=12,
+                    padding=10,
+                    background=purple,
+                ),                
+
+                widget.Clock(
+                    format='  %d/%m/%y %H:%M',
+                    font="JetBrains Mono Bold",
+                    background=purple,
+                ),
+                right_half_circle(purple),
+
+                widget.Spacer(
+                    length=18,
+                ),
             ],
-            1,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            size=32,
+            margin=[10, 10, 5, 10],
+            background='#00000000',
+            opacity=1,
         ),
-
     ),
 ]
+
+################################################################################################
+######################################## MOUSE #################################################
+################################################################################################
 
 # Drag floating layouts.
 mouse = [
@@ -241,7 +457,6 @@ wmname = "LG3D"
 autostart = [
         "feh --bg-fill ../wallpapers/ramen-bowl-godzilla-v-kong-1920×1080.jpg",
         "picom --no-vsync &",
-        "polybar -r &"
         ]
 
 for i in autostart:
