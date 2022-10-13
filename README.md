@@ -18,7 +18,6 @@ Note: The display server I use is Xorg, none of this has been tested on Wayland
 
 Fonts used are:
   - JetBrains Mono Nerd Font
-  - Fira Code Nerd Font
 
 Assuming you are using Arch, you can install these packages directly using pacman or from the AUR:
   - qtile
@@ -27,7 +26,6 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - pulseaudio-ctl
   - feh
   - picom
-  - polybar
   - betterlockscreen
   - flameshot
 
