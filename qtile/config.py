@@ -347,22 +347,38 @@ screens = [
                 Spacer(length=10),
 
                 left_half_circle(hk_blue),
+                widget.TextBox(
+                    text="",
+                    font="JetBrains Mono Bold",
+                    fontsize=25,
+                    padding=0,
+                    background=hk_blue,
+                ),
                 widget.CPU(
-                    format='CPU   {load_percent}%',
+                    format='{load_percent}%',
                     fontsize=12,
                     padding=10,
                     font="JetBrains Mono Bold",
                     background=hk_blue,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e htop")},
                 ),
 
+                widget.TextBox(
+                    text="﬙",
+                    font="JetBrains Mono Bold",
+                    fontsize=25,
+                    padding=0,
+                    background=hk_blue,
+                ),
                 widget.Memory(
                     #format='{SwapUsed: .0f}{mm}',
-                    format='RAM  ﬙ {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',
+                    format='{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',
                     measure_mem='G',
                     font="JetBrains Mono Bold",
                     fontsize=12,
                     padding=10,
                     background=hk_blue,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e htop")},
                 ),
                 right_half_circle(hk_blue),
 
@@ -376,20 +392,40 @@ screens = [
                     padding=0,
                     background=purple,
                 ),
-                
                 widget.PulseVolume(
                     font='JetBrains Mono Bold',
                     fontsize=12,
                     padding=10,
                     background=purple,
-                ),                
+                ),
 
+                widget.TextBox(
+                    text="",
+                    font="JetBrains Mono Bold",
+                    fontsize=24,
+                    padding=0,
+                    background=purple,
+                ),
                 widget.Clock(
-                    format='  %d/%m/%y %H:%M',
+                    format='%d/%m/%y %H:%M',
                     font="JetBrains Mono Bold",
                     background=purple,
                 ),
                 right_half_circle(purple),
+
+                Spacer(length=10),
+
+                left_half_circle(hk_red),
+                widget.TextBox(
+                    text="",
+                    font="JetBrains Mono Bold",
+                    fontsize=24,
+                    padding=0,
+                    background=hk_red,
+                    mouse_callbacks={"Button1": lazy.spawn("bash ~/.config/scripts/rofi-powermenu.sh")},
+                ),
+
+                right_half_circle(hk_red),
 
                 widget.Spacer(
                     length=18,
