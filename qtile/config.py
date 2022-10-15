@@ -151,6 +151,9 @@ hk_gold = "#d8b049"
 hk_blue = "#508abb"
 hk_black = "#2d2929"
 
+# Ramen bowl colors
+pumpkin_orange = "#fb7a09"
+neon_fucsia = "#fd4165"
 
 ################################################################################################
 ###################################### LAYOUTS #################################################
@@ -290,6 +293,19 @@ screens = [
                 right_half_circle(hk_blue),
 
                 Spacer(length=10),
+                
+                left_half_circle(hk_gold),
+                widget.TextBox(
+                    text="異",
+                    font="JetBrains Mono Bold",
+                    fontsize=25,
+                    padding=0,
+                    background=hk_gold,
+                    mouse_callbacks={"Button1": lazy.spawn("rofi -show drun -show-icons")},
+                ),
+                right_half_circle(hk_gold),
+
+                Spacer(length=10),
 
                 left_half_circle(hk_black),
                 widget.WindowName(
@@ -299,19 +315,20 @@ screens = [
                     empty_group_string = 'Desktop',
                     background=hk_black,
                 ),
+
+                widget.Systray(
+                    fontsize=2,
+                    background=hk_black,
+                ),
+
+                widget.TextBox(
+                    text=' ',
+                    background=hk_black,
+                ),
+
                 right_half_circle(hk_black),
 
                 Spacer(length=10),
-
-                #widget.Systray(
-                #    fontsize=2,
-                #    background=background,
-                #),
-
-                #widget.TextBox(
-                #    text=' ',
-                #    background=background,
-                #),
 
                 #widget.TextBox(
                 #    text='',
@@ -341,6 +358,7 @@ screens = [
                     padding=10,
                     font="JetBrains Mono Bold",
                     background=aquamarine,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e sudo pacman -Syyu")},
                 ),
                 right_half_circle(aquamarine),
 
