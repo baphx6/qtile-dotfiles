@@ -97,7 +97,6 @@ keys = [
     Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Flameshot fullscreenshot")
 ]
 
-
 ################################################################################################
 ###################################### GROUPS ##################################################
 ################################################################################################
@@ -321,29 +320,9 @@ screens = [
                     background=hk_black,
                 ),
 
-                widget.TextBox(
-                    text=' ',
-                    background=hk_black,
-                ),
-
                 right_half_circle(hk_black),
 
                 Spacer(length=10),
-
-                #widget.TextBox(
-                #    text='',
-                #    size=20,
-                #    font='JetBrains Mono Bold',
-                #    background=background,
-                #),
-                 
-                #widget.Battery(
-                #    format=' {percent:2.0%}',
-                #    font="JetBrains Mono ExtraBold",
-                #    fontsize=12,
-                #    padding=10,
-                #    background=background,
-                #),                     
 
                 left_half_circle(aquamarine),
                 widget.CheckUpdates(
@@ -358,7 +337,7 @@ screens = [
                     padding=10,
                     font="JetBrains Mono Bold",
                     background=aquamarine,
-                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e sudo pacman -Syyu")},
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e sudo pacman -Syyu")},
                 ),
                 right_half_circle(aquamarine),
 
@@ -371,6 +350,7 @@ screens = [
                     fontsize=25,
                     padding=0,
                     background=hk_blue,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
                 widget.CPU(
                     format='{load_percent}%',
@@ -378,7 +358,7 @@ screens = [
                     padding=10,
                     font="JetBrains Mono Bold",
                     background=hk_blue,
-                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e htop")},
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
 
                 widget.TextBox(
@@ -387,6 +367,7 @@ screens = [
                     fontsize=25,
                     padding=0,
                     background=hk_blue,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
                 widget.Memory(
                     #format='{SwapUsed: .0f}{mm}',
@@ -396,13 +377,44 @@ screens = [
                     fontsize=12,
                     padding=10,
                     background=hk_blue,
-                    mouse_callbacks={"Button1": lazy.spawn("alacritty -e htop")},
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
+                #widget.TextBox(
+                #    text='',
+                #    size=20,
+                #    font='JetBrains Mono Bold',
+                #    background=background,
+                #),
+                 
+                #widget.Battery(
+                #    format=' {percent:2.0%}',
+                #    font="JetBrains Mono ExtraBold",
+                #    fontsize=12,
+                #    padding=10,
+                #    background=background,
+                #),             
                 right_half_circle(hk_blue),
 
                 Spacer(length=10),
 
                 left_half_circle(purple),
+                widget.TextBox(
+                    text="",
+                    font="JetBrains Mono Bold",
+                    fontsize=15,
+                    padding=0,
+                    background=purple,
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e nmtui")},
+                ),
+                widget.Net(
+                    font='JetBrains Mono Bold',
+                    fontsize=12,
+                    padding=10,
+                    background=purple,
+                    format="Wired Connection",
+                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e nmtui")},
+                ),
+
                 widget.TextBox(
                     text="",
                     font="JetBrains Mono Bold",
@@ -440,7 +452,7 @@ screens = [
                     fontsize=24,
                     padding=0,
                     background=hk_red,
-                    mouse_callbacks={"Button1": lazy.spawn("bash ~/.config/scripts/rofi-powermenu.sh")},
+                    mouse_callbacks={"Button1": lazy.spawn("bash ../scripts/rofi-powermenu.sh")},
                 ),
 
                 right_half_circle(hk_red),
@@ -483,6 +495,8 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+
+        Match(wm_class="float"),  # Custom rule to float windows spawned from widgets 
     ]
 )
 auto_fullscreen = True
