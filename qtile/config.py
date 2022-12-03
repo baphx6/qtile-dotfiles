@@ -33,6 +33,9 @@ from typing import Optional
 from libqtile.widget.textbox import TextBox
 from libqtile.widget.spacer import Spacer
 
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration 
+
 import os
 
 mod = "mod4"
@@ -204,62 +207,26 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 ################################################################################################
-###################################### UNICODE #################################################
-################################################################################################
-
-def left_half_circle(fg_color):
-    return TextBox(
-        text='\uE0B6',
-        fontsize=28,
-        foreground=fg_color,
-        padding=0)
-
-
-def right_half_circle(fg_color, bg_color: Optional['str'] = None):
-    return TextBox(
-        text='\uE0B4',
-        fontsize=28,
-        background=bg_color,
-        foreground=fg_color,
-        padding=0)
-
-
-def lower_left_triangle(bg_color, fg_color):
-    return TextBox(
-        text='\u25e2',
-        padding=0,
-        fontsize=50,
-        background=bg_color,
-        foreground=fg_color)
-
-
-def left_arrow(bg_color, fg_color):
-    return TextBox(
-        text='\uE0B2',
-        padding=0,
-        fontsize=24,
-        background=bg_color,
-        foreground=fg_color)
-
-
-def right_arrow(bg_color, fg_color):
-    return TextBox(
-        text='\uE0B0',
-        padding=0,
-        fontsize=24,
-        background=bg_color,
-        foreground=fg_color)
-
-################################################################################################
 ######################################## BAR ###################################################
 ################################################################################################
+
+powerline_left = {
+    "decorations": [
+        PowerLineDecoration(path="rounded_left")
+    ]
+}
+powerline_right = {
+    "decorations": [
+        PowerLineDecoration(path="rounded_right")
+    ]
+}
+
 
 screens = [
 
     Screen(
         top=bar.Bar(
             [
-                left_half_circle(hk_black),
                 widget.GroupBox(
                     fontsize=16,
                     borderwidth=3,
@@ -273,12 +240,8 @@ screens = [
                     this_current_screen_border=purple,
                     rounded=True,
                     disable_drag=True,
+                    **powerline_left,
                  ),
-                right_half_circle(hk_black),
-
-                Spacer(length=10),
-
-                left_half_circle(hk_blue),
                 widget.CurrentLayoutIcon(
                     padding = 0,
                     scale = 0.5,
@@ -288,43 +251,31 @@ screens = [
                     widget.CurrentLayout(
                     font= 'JetBrains Mono Bold',
                     background=hk_blue,
+                    **powerline_left,
                 ),
-                right_half_circle(hk_blue),
-
-                Spacer(length=10),
-                
-                left_half_circle(hk_gold),
                 widget.TextBox(
                     text="異",
                     font="JetBrains Mono Bold",
                     fontsize=25,
-                    padding=0,
+                    padding=7,
                     background=hk_gold,
                     mouse_callbacks={"Button1": lazy.spawn("rofi -show drun -show-icons")},
+                    **powerline_left,
                 ),
-                right_half_circle(hk_gold),
-
-                Spacer(length=10),
-
-                left_half_circle(hk_black),
+                widget.Systray(
+                    padding=7,
+                    fontsize=2,
+                    background=hk_black,
+                ),
                 widget.WindowName(
                     format = "{name}",
                     #format = "{ }",
                     font='JetBrains Mono Bold',
                     empty_group_string = 'Desktop',
+                    padding=7,
                     background=hk_black,
+                    **powerline_right
                 ),
-
-                widget.Systray(
-                    fontsize=2,
-                    background=hk_black,
-                ),
-
-                right_half_circle(hk_black),
-
-                Spacer(length=10),
-
-                left_half_circle(aquamarine),
                 widget.CheckUpdates(
                     distro='Arch_Sup',
                     #colour_have_updates=white,
@@ -338,12 +289,8 @@ screens = [
                     font="JetBrains Mono Bold",
                     background=aquamarine,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e sudo pacman -Syyu")},
+                    **powerline_right,
                 ),
-                right_half_circle(aquamarine),
-
-                Spacer(length=10),
-
-                left_half_circle(hk_blue),
                 widget.TextBox(
                     text="",
                     font="JetBrains Mono Bold",
@@ -360,7 +307,6 @@ screens = [
                     background=hk_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
-
                 widget.TextBox(
                     text="﬙",
                     font="JetBrains Mono Bold",
@@ -378,26 +324,12 @@ screens = [
                     padding=10,
                     background=hk_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
+                    **powerline_right
                 ),
-                #widget.TextBox(
-                #    text='',
-                #    size=20,
-                #    font='JetBrains Mono Bold',
-                #    background=background,
-                #),
-                 
-                #widget.Battery(
-                #    format=' {percent:2.0%}',
-                #    font="JetBrains Mono ExtraBold",
-                #    fontsize=12,
-                #    padding=10,
-                #    background=background,
-                #),             
-                right_half_circle(hk_blue),
+                widget.UPowerWidget(
 
-                Spacer(length=10),
-
-                left_half_circle(purple),
+                ),
+                # widget.WifiIcon(),
                 widget.TextBox(
                     text="",
                     font="JetBrains Mono Bold",
@@ -440,25 +372,17 @@ screens = [
                     format='%d/%m/%y %H:%M',
                     font="JetBrains Mono Bold",
                     background=purple,
+                    padding=7,
+                    **powerline_right
                 ),
-                right_half_circle(purple),
-
-                Spacer(length=10),
-
-                left_half_circle(hk_red),
                 widget.TextBox(
                     text="",
                     font="JetBrains Mono Bold",
                     fontsize=24,
                     padding=0,
                     background=hk_red,
-                    mouse_callbacks={"Button1": lazy.spawn("bash ../scripts/rofi-powermenu.sh")},
-                ),
-
-                right_half_circle(hk_red),
-
-                widget.Spacer(
-                    length=18,
+                    mouse_callbacks={"Button1": lazy.spawn("bash /home/faust/.config/scripts/rofi-powermenu.sh")},
+                    **powerline_left
                 ),
             ],
             size=32,
@@ -523,7 +447,7 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill ../wallpapers/ramen-bowl-godzilla-v-kong-1920×1080.jpg",
+        "feh --bg-fill ~/.config/wallpapers/astronaut-minimal.jpg",
         "picom --no-vsync &",
         ]
 

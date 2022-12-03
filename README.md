@@ -17,8 +17,11 @@ Note: The display server I use is Xorg, none of this has been tested on Wayland
 Fonts used are:
   - JetBrains Mono Nerd Font
 
-Assuming you are using Arch, you can install these packages directly using pacman or from the AUR:
+Dependencies:
   - qtile
+  - qtile-extras
+  - zsh
+  - zsh-completions
   - alacritty
   - rofi
   - pulseaudio-ctl
@@ -26,6 +29,18 @@ Assuming you are using Arch, you can install these packages directly using pacma
   - picom
   - betterlockscreen
   - flameshot
+
+If you are using an Arch based distro you can install these using your favourite AUR helper:
+
+```bash
+paru -S qtile qtile-extras alacritty rofi pulseaudio-ctl feh picom betterlockscreen flameshot nerd-fonts-jetbrains-mono zsh zsh-completions
+```
+
+Qtile uses some third-party libraries that you will also need to install using pip:
+
+```bash
+pip install dbus-next iwlib
+```
 
 ## Login
 
