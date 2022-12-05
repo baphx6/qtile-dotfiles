@@ -17,6 +17,10 @@ Note: The display server I use is Xorg, none of this has been tested on Wayland
 Fonts used are:
   - JetBrains Mono Nerd Font
 
+Themes used are:
+  - breeze
+  - breeze-gtk
+
 Dependencies:
   - qtile
   - qtile-extras
@@ -29,11 +33,12 @@ Dependencies:
   - picom
   - betterlockscreen
   - flameshot
+  - dunst
 
 If you are using an Arch based distro you can install these using your favourite AUR helper:
 
 ```bash
-paru -S qtile qtile-extras alacritty rofi pulseaudio-ctl feh picom betterlockscreen flameshot nerd-fonts-jetbrains-mono zsh zsh-completions
+paru -S qtile qtile-extras alacritty rofi pulseaudio-ctl feh picom betterlockscreen flameshot nerd-fonts-jetbrains-mono zsh zsh-completions dunst breeze breeze-gtk
 ```
 
 Qtile uses some third-party libraries that you will also need to install using pip:
