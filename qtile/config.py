@@ -80,21 +80,27 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
+
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
     # Keybind for rofi
-    Key([mod], "m", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
+    Key([mod], "r", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
+
     # Growing and shrinking windows
-    Key([mod], "plus", lazy.layout.grow()),
-    Key([mod], "minus", lazy.layout.shrink()),
-    # Pulseaudio
-    Key([mod, "shift"], "plus", lazy.spawn("pulseaudio-ctl up"), desc="vol +5%"),
-    Key([mod, "shift"], "minus", lazy.spawn("pulseaudio-ctl down"), desc="vol -5%"),
+    Key([mod, "shift"], "plus", lazy.layout.grow()),
+    Key([mod, "shift"], "minus", lazy.layout.shrink()),
+
+    # Audio 
+    Key([mod], "plus", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh up"), desc="vol +5%"),
+    Key([mod], "minus", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh down"), desc="vol -5%"),
+    Key([mod], "m", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh toggle"), desc="toggle mute"),
+
     # BetterLockScreen
     Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen"),
+
     # Flameshot
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="Flameshot gui screenshot"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot screen"), desc="Flameshot fullscreenshot")
@@ -283,7 +289,7 @@ screens = [
                     display_format= 'Updates 祝  {updates}',
                     no_update_string='Updates 祝  0',
                     #execute= '',
-                    update_interval= 3600,
+                    update_interval= 1800,
                     fontsize=12,
                     padding=10,
                     font="JetBrains Mono Bold",
@@ -359,6 +365,8 @@ screens = [
                     fontsize=12,
                     padding=10,
                     background=purple,
+                    volume_app="pamixer",
+                    update_interval=0.05,
                 ),
 
                 widget.TextBox(

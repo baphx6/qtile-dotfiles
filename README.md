@@ -28,9 +28,9 @@ Dependencies:
   - zsh-completions
   - alacritty
   - rofi
-  - pulseaudio-ctl
   - feh
   - picom
+  - pamixer
   - betterlockscreen
   - flameshot
   - dunst
@@ -38,7 +38,7 @@ Dependencies:
 If you are using an Arch based distro you can install these using your favourite AUR helper:
 
 ```bash
-paru -S qtile qtile-extras alacritty rofi pulseaudio-ctl feh picom betterlockscreen flameshot nerd-fonts-jetbrains-mono zsh zsh-completions dunst breeze breeze-gtk
+paru -S qtile qtile-extras alacritty pamixer rofi feh picom betterlockscreen flameshot nerd-fonts-jetbrains-mono zsh zsh-completions dunst breeze breeze-gtk
 ```
 
 Qtile uses some third-party libraries that you will also need to install using pip:
@@ -64,13 +64,14 @@ If logging in from the tty is not your thing, you may want to check some login m
 + `mod + w` : Kill focused window
 + `mod + control + r` : Reload Qtile
 + `mod + control + q` : Shutdown Qtile
-+ `mod + m` : Launch Rofi
-+ `mod + "plus"` : Grow window (Tiling layouts only)
-+ `mod + "minus"` : Shrink  window (Tiling layouts only)
-+ `mod + shift + "plus"` : Pulseaudio volume +5%
-+ `mod + shift + "minus"` : Pulseaudio volume -5%
++ `mod + r` : Launch Rofi
++ `mod + shift + "plus"` : Grow window (Tiling layouts only)
++ `mod + shift + "minus"` : Shrink  window (Tiling layouts only)
++ `mod + "plus"` : Volume +5%
++ `mod + "minus"` : Volume -5%
++ `mod + m` : Toggle Mute
 + `mod + l` : Lock screen 
-+ `mod + [1-5]` : Switch between workspaces
++ `mod + [1-7]` : Switch between workspaces
 + `mod + s` : Select screenshot area
 + `mod + shift + s` : Full screenshot 
 
@@ -111,4 +112,3 @@ For more info check their repository: https://github.com/betterlockscreen/better
 
 ## Shoutouts
   - NvChad: https://github.com/NvChad/NvChad
-  - zsh4humans: https://github.com/romkatv/zsh4humans
