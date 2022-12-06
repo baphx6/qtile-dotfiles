@@ -60,6 +60,7 @@
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
 
+    
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -324,6 +325,8 @@
     timeout = 3
     # Icon for notifications with normal urgency, uncomment to enable
     default_icon = /usr/share/icons/breeze-dark/preferences/32/preferences-desktop-notification-bell.svg
+    # Progress bar color "#6fa8dc"
+    highlight = "#6fa8dc"
 
 [urgency_critical]
     background = "#900000"
@@ -408,6 +411,7 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
@@ -421,10 +425,10 @@
 #    summary = "foobar"
 #    skip_display = true
 
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
+[history-ignore]
+    # This notification will not be saved in history
+    appname= changevolume
+    history_ignore = yes
 
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
