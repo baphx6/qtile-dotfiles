@@ -87,7 +87,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # Keybind for rofi
-    Key([mod], "r", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
+    Key([mod], "m", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
 
     # Growing and shrinking windows
     Key([mod, "shift"], "plus", lazy.layout.grow()),
@@ -96,7 +96,7 @@ keys = [
     # Audio 
     Key([mod], "plus", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh up"), desc="vol +5%"),
     Key([mod], "minus", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh down"), desc="vol -5%"),
-    Key([mod], "m", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh toggle"), desc="toggle mute"),
+    Key([mod], "v", lazy.spawn("bash /home/faust/.config/scripts/volume-notif.sh toggle"), desc="toggle mute"),
 
     # BetterLockScreen
     Key([mod], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen"),

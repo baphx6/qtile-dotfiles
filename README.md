@@ -64,12 +64,12 @@ If logging in from the tty is not your thing, you may want to check some login m
 + `mod + w` : Kill focused window
 + `mod + control + r` : Reload Qtile
 + `mod + control + q` : Shutdown Qtile
-+ `mod + r` : Launch Rofi
++ `mod + m` : Launch Rofi
 + `mod + shift + "plus"` : Grow window (Tiling layouts only)
 + `mod + shift + "minus"` : Shrink  window (Tiling layouts only)
 + `mod + "plus"` : Volume +5%
 + `mod + "minus"` : Volume -5%
-+ `mod + m` : Toggle Mute
++ `mod + v` : Toggle Mute
 + `mod + l` : Lock screen 
 + `mod + [1-7]` : Switch between workspaces
 + `mod + s` : Select screenshot area
