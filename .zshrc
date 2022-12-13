@@ -82,10 +82,12 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 ############# ALIASES ##############
 ####################################
 
+alias grep="grep --color"
 alias ls='ls --color'
 LS_COLORS="di=1;35:*.py=32:*.sh=32:*.odt=36:*.docx=36:*.doc=36:*.html=36:*.png=36:*.jpg=36:*.rb=31:*.vbs=31:*.js=33:*.css=34:*.git=34:*.txt=29"
 export LS_COLORS
 alias ls="/usr/bin/lsd"
+alias ll="ls -la"
 alias cat="/usr/bin/bat"
 
 ####################################
