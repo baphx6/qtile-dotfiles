@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -38,9 +12,11 @@ from qtile_extras.widget.decorations import PowerLineDecoration
 
 import os
 
+import netifaces as ni
+
 mod = "mod4"
 #terminal = guess_terminal()
-terminal = "alacritty"
+terminal = "alacritty" 
  
 ################################################################################################
 ###################################### KEYBINDS ################################################
@@ -87,7 +63,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # Keybind for rofi
-    Key([mod], "m", lazy.spawn("rofi -show drun -show-icons"), desc="Launch Rofi"),
+    Key([mod], "m", lazy.spawn("rofi -show run -show-icons"), desc="Launch Rofi"),
 
     # Growing and shrinking windows
     Key([mod, "shift"], "plus", lazy.layout.grow()),
@@ -213,6 +189,18 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 ################################################################################################
+##################################### FUNCTIONS ################################################
+################################################################################################
+
+def get_vpn_ip():
+    try:
+        addrs = ni.ifaddresses('tun0')
+        ip = addrs[ni.AF_INET][0]['addr']
+    except:
+        ip = "Off"
+    return ip
+
+################################################################################################
 ######################################## BAR ###################################################
 ################################################################################################
 
@@ -254,25 +242,25 @@ screens = [
                     background=hk_blue,
                 ),
 
-                    widget.CurrentLayout(
+                widget.CurrentLayout(
                     font= 'JetBrains Mono Bold',
                     background=hk_blue,
                     **powerline_left,
                 ),
                 widget.TextBox(
-                    text="異",
+                    text="",
                     font="JetBrains Mono Bold",
-                    fontsize=25,
+                    fontsize=47,
                     padding=7,
-                    background=hk_gold,
+                    background=aquamarine,
                     mouse_callbacks={"Button1": lazy.spawn("rofi -show drun -show-icons")},
                     **powerline_left,
                 ),
-                widget.Systray(
-                    padding=7,
-                    fontsize=2,
-                    background=hk_black,
-                ),
+                # widget.Systray(
+                #     padding=7,
+                #     fontsize=2,
+                #     background=hk_black,
+                # ),
                 widget.WindowName(
                     format = "{name}",
                     #format = "{ }",
@@ -282,21 +270,30 @@ screens = [
                     background=hk_black,
                     **powerline_right
                 ),
-                widget.CheckUpdates(
-                    distro='Arch_Sup',
-                    #colour_have_updates=white,
-                    #colour_no_updates=blue,
-                    display_format= 'Updates 祝  {updates}',
-                    no_update_string='Updates 祝  0',
-                    #execute= '',
-                    update_interval= 300,
+                # widget.CheckUpdates(
+                #     distro='Arch_Sup',
+                #     #colour_have_updates=white,
+                #     #colour_no_updates=blue,
+                #     display_format= 'Updates 祝  {updates}',
+                #     no_update_string='Updates 祝  0',
+                #     #execute= '',
+                #     update_interval= 300,
+                #     fontsize=12,
+                #     padding=10,
+                #     font="JetBrains Mono Bold",
+                #     background=aquamarine,
+                #     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e sudo pacman -Syyu")},
+                #     **powerline_right,
+                # ),
+                widget.TextBox(
+                    text=f'HTB VPN: {get_vpn_ip()}',
+                    font="JetBrains Mono Bold",
                     fontsize=12,
                     padding=10,
-                    font="JetBrains Mono Bold",
                     background=aquamarine,
-                    mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e sudo pacman -Syyu")},
-                    **powerline_right,
+                    **powerline_right
                 ),
+                # widget.TextBox(text=get_vpn_ip()),
                 widget.TextBox(
                     text="",
                     font="JetBrains Mono Bold",
@@ -332,9 +329,9 @@ screens = [
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                     **powerline_right
                 ),
-                widget.UPowerWidget(
+                # widget.UPowerWidget(
 
-                ),
+                # ),
                 # widget.WifiIcon(),
                 widget.TextBox(
                     text="",
@@ -353,21 +350,21 @@ screens = [
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e nmtui")},
                 ),
 
-                widget.TextBox(
-                    text="",
-                    font="JetBrains Mono Bold",
-                    fontsize=25,
-                    padding=0,
-                    background=purple,
-                ),
-                widget.PulseVolume(
-                    font='JetBrains Mono Bold',
-                    fontsize=12,
-                    padding=10,
-                    background=purple,
-                    volume_app="pamixer",
-                    update_interval=0.05,
-                ),
+                # widget.TextBox(
+                #     text="",
+                #     font="JetBrains Mono Bold",
+                #     fontsize=25,
+                #     padding=0,
+                #     background=purple,
+                # ),
+                # widget.PulseVolume(
+                #     font='JetBrains Mono Bold',
+                #     fontsize=12,
+                #     padding=10,
+                #     background=purple,
+                #     volume_app="pamixer",
+                #     update_interval=0.05,
+                # ),
 
                 widget.TextBox(
                     text="",
@@ -389,7 +386,7 @@ screens = [
                     fontsize=24,
                     padding=0,
                     background=hk_red,
-                    mouse_callbacks={"Button1": lazy.spawn("bash /home/faust/.config/scripts/rofi-powermenu.sh")},
+                    mouse_callbacks={"Button1": lazy.spawn("bash /home/baphx6/.config/scripts/rofi-powermenu.sh")},
                     **powerline_left
                 ),
             ],
@@ -455,7 +452,8 @@ wmname = "LG3D"
 #List of commands to run when Qtile starts
 
 autostart = [
-        "feh --bg-fill ~/.config/wallpapers/astronaut-minimal.jpg",
+        "xrandr --output Virtual-1 --mode 1920x1080",
+        "feh --bg-fill ~/.config/wallpapers/loneliness-vaporwave.png",
         "picom --no-vsync &",
         ]
 
