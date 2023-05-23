@@ -139,6 +139,14 @@ hk_black = "#2d2929"
 pumpkin_orange = "#fb7a09"
 neon_fucsia = "#fd4165"
 
+# False god
+gold = "#fb980e"
+space_cadet = "#1f2543ff"
+bittersweet_shimmer = "#cc444bff"
+medium_slate_blue = "#6b7bf3ff"
+carolina_blue = "#6daedbff"
+battleship_gray = "#909590"
+
 ################################################################################################
 ###################################### LAYOUTS #################################################
 ################################################################################################
@@ -151,24 +159,24 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(
-        border_normal=blue,
-        border_focus=purple,
+        border_normal=battleship_gray,
+        border_focus=medium_slate_blue,
         border_width=3,
         margin=6,
         single_border_width=3,
         single_margin=4
         ),
     layout.MonadWide(
-        border_normal=blue,
-        border_focus=purple,
+        border_normal=battleship_gray,
+        border_focus=medium_slate_blue,
         border_width=3,
         margin=6,
         single_border_width=3,
         single_margin=4
         ),
     layout.Floating(
-        border_normal=blue,
-        border_focus=purple,
+        border_normal=battleship_gray,
+        border_focus=medium_slate_blue,
         border_width=3,
         margin=6,
         single_border_width=3,
@@ -225,26 +233,26 @@ screens = [
                     fontsize=16,
                     borderwidth=3,
                     highlight_method='line',
-                    active=blue,
-                    block_highlight_text_color=blue,
+                    active=medium_slate_blue,
+                    block_highlight_text_color=bittersweet_shimmer,
                     highlight_color=hk_black,
-                    inactive=aquamarine,
+                    inactive=battleship_gray,
                     foreground=background,
                     background=hk_black,
-                    this_current_screen_border=purple,
+                    this_current_screen_border=hk_black,
                     rounded=True,
                     disable_drag=True,
                     **powerline_left,
-                 ),
+                ),
                 widget.CurrentLayoutIcon(
                     padding = 0,
                     scale = 0.5,
-                    background=hk_blue,
+                    background=carolina_blue,
                 ),
 
                 widget.CurrentLayout(
                     font= 'JetBrains Mono Bold',
-                    background=hk_blue,
+                    background=carolina_blue,
                     **powerline_left,
                 ),
                 widget.TextBox(
@@ -252,15 +260,17 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=47,
                     padding=7,
-                    background=aquamarine,
+                    background=battleship_gray,
                     mouse_callbacks={"Button1": lazy.spawn("rofi -show drun -show-icons")},
                     **powerline_left,
                 ),
-                # widget.Systray(
-                #     padding=7,
-                #     fontsize=2,
-                #     background=hk_black,
-                # ),
+
+                widget.Systray(
+                    padding=7,
+                    fontsize=2,
+                    background=hk_black,
+                ),
+
                 widget.WindowName(
                     format = "{name}",
                     #format = "{ }",
@@ -290,7 +300,7 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=12,
                     padding=10,
-                    background=aquamarine,
+                    background=battleship_gray,
                     **powerline_right
                 ),
                 # widget.TextBox(text=get_vpn_ip()),
@@ -299,7 +309,7 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=25,
                     padding=0,
-                    background=hk_blue,
+                    background=carolina_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
                 widget.CPU(
@@ -307,7 +317,7 @@ screens = [
                     fontsize=12,
                     padding=10,
                     font="JetBrains Mono Bold",
-                    background=hk_blue,
+                    background=carolina_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
                 widget.TextBox(
@@ -315,7 +325,7 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=25,
                     padding=0,
-                    background=hk_blue,
+                    background=carolina_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                 ),
                 widget.Memory(
@@ -325,7 +335,7 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=12,
                     padding=10,
-                    background=hk_blue,
+                    background=carolina_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e htop")},
                     **powerline_right
                 ),
@@ -338,14 +348,14 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=15,
                     padding=0,
-                    background=purple,
+                    background=medium_slate_blue,
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e nmtui")},
                 ),
                 widget.Net(
                     font='JetBrains Mono Bold',
                     fontsize=12,
                     padding=10,
-                    background=purple,
+                    background=medium_slate_blue,
                     format="Wired Connection",
                     mouse_callbacks={"Button1": lazy.spawn("alacritty --class float -e nmtui")},
                 ),
@@ -355,13 +365,13 @@ screens = [
                 #     font="JetBrains Mono Bold",
                 #     fontsize=25,
                 #     padding=0,
-                #     background=purple,
+                #     background=medium_slate_blue,
                 # ),
                 # widget.PulseVolume(
                 #     font='JetBrains Mono Bold',
                 #     fontsize=12,
                 #     padding=10,
-                #     background=purple,
+                #     background=medium_slate_blue,
                 #     volume_app="pamixer",
                 #     update_interval=0.05,
                 # ),
@@ -371,12 +381,12 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=24,
                     padding=0,
-                    background=purple,
+                    background=medium_slate_blue,
                 ),
                 widget.Clock(
                     format='%d/%m/%y %H:%M',
                     font="JetBrains Mono Bold",
-                    background=purple,
+                    background=medium_slate_blue,
                     padding=7,
                     **powerline_right
                 ),
@@ -385,7 +395,7 @@ screens = [
                     font="JetBrains Mono Bold",
                     fontsize=24,
                     padding=0,
-                    background=hk_red,
+                    background=bittersweet_shimmer,
                     mouse_callbacks={"Button1": lazy.spawn("bash /home/baphx6/.config/scripts/rofi-powermenu.sh")},
                     **powerline_left
                 ),
@@ -453,7 +463,7 @@ wmname = "LG3D"
 
 autostart = [
         "xrandr --output Virtual-1 --mode 1920x1080",
-        "feh --bg-fill ~/.config/wallpapers/loneliness-vaporwave.png",
+        "feh --bg-fill ~/.config/wallpapers/false_god.jpg",
         "picom --no-vsync &",
         ]
 
